@@ -28,8 +28,8 @@ export const sharedState = (C, prop) =>
     }
   }
 
-export const getComponentInstance = store =>
+export const getComponentInstance = (store, ms = 100) =>
   new Promise((resolve, reject) =>
     store.instance && resolve(store.instance) ||
-    setTimeout(() => store.instance && resolve(store.instance), 100)
+    setTimeout(() => store.instance && resolve(store.instance), ms)
   );
