@@ -59,11 +59,6 @@ A helper function that return a promise of a share Component `instance`. This co
 getComponentInstance(store, ms)
 ```
 
-## Usage
-WIP
-```
-```
-
 ## Contributing
 * Documentation improvement
 * Feel free to send any PR
