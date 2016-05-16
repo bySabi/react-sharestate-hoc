@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const sharedState = (C, prop) =>
+export const sharedState = (C, prop = 'sharedComponent') =>
   class _sharedState extends React.Component {
     constructor(props) {
       super(props);
@@ -30,6 +30,6 @@ export const sharedState = (C, prop) =>
 
 export const getComponentInstance = (store, ms = 100) =>
   new Promise((resolve, reject) =>
-    store.instance && resolve(store.instance) ||
-    setTimeout(() => store.instance && resolve(store.instance), ms)
+    store._shareInstance && resolve(store._shareInstance) ||
+    setTimeout(() => store._shareInstance && resolve(store._shareInstance), ms)
   );

@@ -16,17 +16,15 @@ export function shareStateBind(C) {
 }
 
 export const shareState = (C, store) => {
-  if (store.instance) {
+  if (store._shareInstance) {
     return warning(true, "Already set component '%s'", store.name);
   }
-
-  store.init = value => store.instance = value;
 
   return class _shareState extends React.Component {
     constructor(props) {
       super(props);
 
-      store.init(this);
+      store._shareInstance = this;
       this.listeners = new Set();
     }
 
