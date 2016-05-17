@@ -1,6 +1,6 @@
 {
   "name": "react-sharestate-hoc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A React higher-order component for share state using a Pub/Sub pattern",
   "files": [
     "lib"

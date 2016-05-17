@@ -29,7 +29,13 @@ export const sharedState = (C, prop = 'sharedComponent') =>
   }
 
 export const getComponentInstance = (store, ms = 100) =>
-  new Promise((resolve, reject) =>
-    store._shareInstance && resolve(store._shareInstance) ||
+  new Promise((resolve, reject) => {
+    if (!store) {
+      reject(store);
+    }
+    if (store._shareInstance) {
+      resolve(store._shareInstance);
+    }
     setTimeout(() => store._shareInstance && resolve(store._shareInstance), ms)
-  );
+  });
+
