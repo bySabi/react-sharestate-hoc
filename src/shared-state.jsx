@@ -9,11 +9,11 @@ export const sharedState = (C, prop = 'sharedComponent') =>
 
       const store = props[prop];
       getComponentInstance(store).then(instance => {
-        this.shareStore = instance;
-        this.shareStore.subscribe(this._updateState);
+          this.shareStore = instance;
+          this.shareStore.subscribe(this._updateState);
 
-        this.setState({ instance });
-      });
+          this.setState({ instance });
+      }, () => {});
     }
 
     _updateState = shared => this.setState({ shared });
@@ -32,10 +32,11 @@ export const getComponentInstance = (store, ms = 100) =>
   new Promise((resolve, reject) => {
     if (!store) {
       reject(store);
+    } else {
+      if (store._shareInstance) {
+        resolve(store._shareInstance);
+      } else {
+        setTimeout(() => store._shareInstance && resolve(store._shareInstance), ms);
+      }
     }
-    if (store._shareInstance) {
-      resolve(store._shareInstance);
-    }
-    setTimeout(() => store._shareInstance && resolve(store._shareInstance), ms)
   });
-
