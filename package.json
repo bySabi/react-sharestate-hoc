@@ -1,6 +1,6 @@
 {
   "name": "react-sharestate-hoc",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React higher-order component for share state using a Pub/Sub pattern",
   "files": [
     "lib"
@@ -11,8 +11,8 @@
     "clean": "rimraf ./lib",
     "build": "rimraf lib && babel ./src -d lib --ignore '__tests__'",
     "start": "npm run clean && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint src"
+    "lint": "eslint src/**/*.js*",
+    "pretest": "npm run lint"
   },
   "keywords": [
     "react",
@@ -39,9 +39,12 @@
     "babel-plugin-transform-runtime": "6.x.x",
     "babel-eslint": "6.x.x",
     "eslint": "2.x.x",
-    "eslint-config-defaults": "9.x.x",
-    "eslint-plugin-react": "4.x.x",
-    "eslint-plugin-babel": "3.x.x",
+    "eslint-config-bysabi": "git+https://github.com/bySabi/eslint-config-bysabi.git#master",
+    "eslint-config-standard": "5.x.x",
+    "eslint-config-standard-react": "2.x.x",
+    "eslint-plugin-promise": "1.x.x",
+    "eslint-plugin-react": "5.x.x",
+    "eslint-plugin-standard": "1.x.x",
     "react": "^15.0.0",
     "rimraf": "2.x.x"
   }

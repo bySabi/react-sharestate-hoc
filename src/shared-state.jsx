@@ -9,10 +9,10 @@ export const sharedState = (C, prop = 'sharedComponent') =>
 
       const store = props[prop];
       getComponentInstance(store).then(instance => {
-          this.shareStore = instance;
-          this.shareStore.subscribe(this._updateState);
+        this.shareStore = instance;
+        this.shareStore.subscribe(this._updateState);
 
-          this.setState({ instance });
+        this.setState({ instance });
       }, () => {});
     }
 
@@ -24,7 +24,7 @@ export const sharedState = (C, prop = 'sharedComponent') =>
 
     render() {
       const { shared, instance } = this.state;
-      return <C {...this.props} _shared={shared} _instance={instance}/>;
+      return <C {...this.props} _shared={shared} _instance={instance} />;
     }
   }
 

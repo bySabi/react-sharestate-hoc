@@ -28,13 +28,14 @@ export const shareState = (C, store) => {
       this.listeners = new Set();
     }
 
-    subscribe(listener)   { this.listeners.add(listener); }
+    subscribe(listener) { this.listeners.add(listener); }
+
     unsubscribe(listener) { this.listeners.delete(listener); }
 
     notifyAll = state => this.listeners.forEach(listener => listener(state));
 
     render() {
-      return <C {...this.props} _setShareState={this.notifyAll} _shareStore={store}/>;
+      return <C {...this.props} _setShareState={this.notifyAll} _shareStore={store} />;
     }
   }
 }
